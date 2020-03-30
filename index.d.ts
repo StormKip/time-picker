@@ -1,4 +1,4 @@
-declare module "rc-time-picker" {
+declare module "rc-time-picker-vcal" {
   import { Moment } from "moment";
   import * as React from "react";
 
