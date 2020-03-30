@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "rc-time-picker",
+  "name": "rc-time-picker-vcal",
   "builds": [
     {
       "src": "package.json",
