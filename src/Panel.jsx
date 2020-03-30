@@ -136,6 +136,7 @@ class Panel extends Component {
       hideDisabledOptions,
       minuteStep,
     );
+    const choiceOptions = generateOptions(60, disabledMinuteOptions, hideDisabledOptions, 15);
     const secondOptions = generateOptions(
       60,
       disabledSecondOptions,
@@ -164,6 +165,7 @@ class Panel extends Component {
           hourOptions={hourOptions}
           minuteOptions={minuteOptions}
           secondOptions={secondOptions}
+          choiceOptions={choiceOptions}
           disabledHours={this.disabledHours}
           disabledMinutes={disabledMinutes}
           disabledSeconds={disabledSeconds}
@@ -185,6 +187,7 @@ class Panel extends Component {
           showSecond={showSecond}
           hourOptions={hourOptions}
           minuteOptions={minuteOptions}
+          choiceOptions={choiceOptions}
           secondOptions={secondOptions}
           disabledHours={this.disabledHours}
           disabledMinutes={disabledMinutes}

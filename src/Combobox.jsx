@@ -42,6 +42,8 @@ class Combobox extends Component {
       }
     } else if (type === 'minute') {
       value.minute(+itemValue);
+    } else if (type === 'choice') {
+      value.minute(itemValue);
     } else if (type === 'ampm') {
       const ampm = itemValue.toUpperCase();
       if (use12Hours) {
@@ -125,6 +127,35 @@ class Combobox extends Component {
     );
   }
 
+  getChoicesSelect(choice) {
+    const {
+      prefixCls,
+      choiceOptions,
+      disabledMinutes,
+      defaultOpenValue,
+      showMinute,
+      value: propValue,
+      onEsc,
+    } = this.props;
+    if (!showMinute) {
+      return null;
+    }
+    const value = propValue || defaultOpenValue;
+    const disabledOptions = disabledMinutes(value.hour());
+
+    return (
+      <Select
+        prefixCls={prefixCls}
+        options={choiceOptions.map(option => formatOption(option, disabledOptions))}
+        selectedIndex={choiceOptions.indexOf(choice)}
+        type="choice"
+        onSelect={this.onItemChange}
+        onMouseEnter={() => this.onEnterSelectPanel('choice')}
+        onEsc={onEsc}
+      />
+    );
+  }
+
   getSecondSelect(second) {
     const {
       prefixCls,
@@ -187,6 +218,7 @@ class Combobox extends Component {
         {this.getHourSelect(value.hour())}
         {this.getMinuteSelect(value.minute())}
         {this.getSecondSelect(value.second())}
+        {this.getChoicesSelect(value.minute())}
         {this.getAMPMSelect(value.hour())}
       </div>
     );
